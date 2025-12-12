@@ -1,1 +1,35 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Фильтр кандидатов на стипендию</title>
+    <style>
+        body { font-family: Arial; max-width: 600px; margin: 40px auto; padding: 20px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="file"], input[type="number"] { width: 100%; padding: 8px; margin-bottom: 10px; }
+        button { background: #4CAF50; color: white; padding: 10px 20px; border: none; cursor: pointer; font-size: 16px; }
+        button:hover { background: #45a049; }
+        .help { color: #666; font-size: 14px; margin-top: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Фильтр кандидатов на стипендию</h1>
+    
+    <form action="/process" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="file">Excel-файл (.xlsx):</label>
+            <input type="file" name="file" id="file" accept=".xlsx" required>
+            <div class="help">Столбцы: ФИО студента, Группа, Математика, Физика, Информатика</div>
+        </div>
+        
+        <div class="form-group">
+            <label for="threshold">Минимальный средний балл:</label>
+            <input type="number" name="threshold" id="threshold" step="0.1" min="0" max="5" value="4.0" required>
+            <div class="help">Студенты с баллом ниже этого значения исключаются</div>
+        </div>
+        
+        <button type="submit">Обработать и скачать отчет</button>
+    </form>
+</body>
+</html> 
